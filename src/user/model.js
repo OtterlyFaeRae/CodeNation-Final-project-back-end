@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     cash: {
         type: Number,
         required: true,
-        default: 500
+        default: 5000
     }, 
     stocks: [],
     history: []

@@ -84,7 +84,8 @@ exports.updateCash = async(req, res)=>{
     try {
         if(req.body.newCash){
             await User.updateOne({username: req.user.username}, {cash: req.body.newCash});
-            res.status(200).send({msg: `User ${req.user.username} cash updated.`, cashUpdated: true});
+            res.status(200).send({msg: `User ${req.user.username} cash updated.`, cashUpdated: true, newCash: req.body.newCash});
+
         } else {
             throw new Error('Missing New Cash Value.')
         }
