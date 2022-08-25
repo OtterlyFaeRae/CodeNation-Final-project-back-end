@@ -116,7 +116,8 @@ exports.addStock = async (req, res) => {
                 if (stocks.some( x => x.name === req.body.addStock.name)) {
                     const userStocks = req.user.stocks
                     const userStock = userStocks.find( el => el.name === newStock.name )
-                    userStock.number = userStock.number + newStock.number
+                    // userStock.number = userStock.number + newStock.number
+                    userStock.number = parseFloat((Math.round((userStock.number + newStock.number) * 100) / 100).toFixed(2))
                     let updatedStocks
                     if (userStock.number > 0) {
                         // a. if the quantity is greater than 0, update stocks                        
